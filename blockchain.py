@@ -1,5 +1,6 @@
 import datetime
 import hashlib
+from copy import deepcopy
 
 class Block:
     blockNo = 0
@@ -34,7 +35,7 @@ class Blockchain:
     target = 2 ** (256-diff)
 
     block = Block("Genesis")
-    dummy = head = block
+    head = deepcopy(block)
 
     def add(self, block):
 
