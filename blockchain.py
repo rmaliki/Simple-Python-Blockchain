@@ -1,6 +1,5 @@
 import datetime
 import hashlib
-from copy import deepcopy
 
 class Block:
     blockNo = 0
@@ -34,8 +33,7 @@ class Blockchain:
     maxNonce = 2**32
     target = 2 ** (256-diff)
 
-    block = Block("Genesis")
-    head = deepcopy(block)
+    head = block = Block("Genesis")
 
     def add(self, block):
 
@@ -56,9 +54,7 @@ class Blockchain:
 
 blockchain = Blockchain()
 
+print(blockchain.head)
+
 for n in range(10):
     blockchain.mine(Block("Block " + str(n+1)))
-
-while blockchain.head != None:
-    print(blockchain.head)
-    blockchain.head = blockchain.head.next
